@@ -10,21 +10,14 @@ package domain;
  *
  * @author mgresse
  */
-public class CommandLine {
+public class DAOCommandLine {
     
     private Reference ref;
     private int quantity;
     
-    public CommandLine(Reference r, int q){
-        if(q<=0) throw new IllegalArgumentException("Quantité négative");
-        else{
-            this.quantity=q;
-        }
+    public DAOCommandLine(Reference r, int quantity){
         this.ref=r;
-    }
-    
-    public void addQuantity(int q){
-        this.quantity+=q;
+        this.quantity=quantity;
     }
     
     public int getQuantity(){
@@ -34,5 +27,4 @@ public class CommandLine {
     public Reference getReference(){
         return this.ref;
     }
-    
 }

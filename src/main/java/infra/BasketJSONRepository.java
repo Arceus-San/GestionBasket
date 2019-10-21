@@ -6,9 +6,14 @@
 
 package infra;
 
+import com.google.gson.Gson;
 import java.util.HashMap;
-import domain.Basket;
 import domain.BasketRepository;
+import domain.DAOBasket;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -17,17 +22,22 @@ import domain.BasketRepository;
 public class BasketJSONRepository implements BasketRepository{
 
     @Override
-    public void save(Basket b) {
+    public void save(DAOBasket b) {
+        Gson gson = new Gson();
+        try {
+            gson.toJson("oui", new FileWriter("json/Basket"+b.getId()+".json"));
+        } catch (IOException ex) {
+            Logger.getLogger(BasketJSONRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public DAOBasket getLastSaveOfBasket(int id) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Basket getLastSaveOfBasket(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public HashMap<Integer, Basket> getAllBaskets() {
+    public HashMap<Integer, DAOBasket> getAllBaskets() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     

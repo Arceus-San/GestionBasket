@@ -14,8 +14,8 @@ import java.util.HashMap;
  */
 public interface BasketRepository {
     
-    public void save(Basket b);
-    public Basket getLastSaveOfBasket(int id);
-    public HashMap<Integer,Basket> getAllBaskets();
+    public void save(DAOBasket b);
+    public DAOBasket getLastSaveOfBasket(int id);
+    public HashMap<Integer,DAOBasket> getAllBaskets();
     
 }
