@@ -1,0 +1,25 @@
+{
+  "basket": {
+    "Fourchette": {
+      "ref": {
+        "number": "98746564",
+        "name": "Fourchette",
+        "description": "Fourchette de qualité",
+        "price": 2
+      },
+      "quantity": 4
+    },
+    "Couteau": {
+      "ref": {
+        "number": "64684613",
+        "name": "Couteau",
+        "description": "Couteau de qualité",
+        "price": 2
+      },
+      "quantity": 4
+    }
+  },
+  "state": false,
+  "amount": 16,
+  "id": 1
+}
