@@ -8,6 +8,7 @@ package infra;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import domain.Basket;
 import domain.BasketRepository;
 import domain.DAOBasket;
 import java.io.BufferedWriter;
@@ -49,7 +50,7 @@ public class BasketJSONRepository implements BasketRepository{
     }
 
     @Override
-    public DAOBasket getLastSaveOfBasket(int id) {
+    public Basket getLastSaveOfBasket(int id) {
         try {
             Path path = Files.createTempFile("json/Basket"+id, ".json");
             if(Files.exists(path)){
@@ -57,7 +58,7 @@ public class BasketJSONRepository implements BasketRepository{
                 Gson gson = new Gson();
                 Reader reader = new FileReader("json/Basket"+id+".json");
                 DAOBasket basket = gson.fromJson(reader, DAOBasket.class);
-                return basket;
+                return new Basket(basket);
             }
         } catch (IOException ex) {
             Logger.getLogger(BasketJSONRepository.class.getName()).log(Level.SEVERE, null, ex);

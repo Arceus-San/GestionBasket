@@ -4,18 +4,14 @@
  * and open the template in the editor.
  */
 
-package domain;
-
-import java.util.HashMap;
+package application;
 
 /**
  *
  * @author mgresse
  */
-public interface BasketRepository {
+public interface HandlerInt {
     
-    public void save(DAOBasket b);
-    public Basket getLastSaveOfBasket(int id);
-    public HashMap<Integer,DAOBasket> getAllBaskets();
+    public void handle(Command c);
     
 }

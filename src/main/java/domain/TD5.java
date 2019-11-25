@@ -6,8 +6,11 @@
 
 package domain;
 
+import application.BasketService;
 import infra.BasketInMemoryRepository;
 import infra.BasketJSONRepository;
+import infra.Gateway;
+import infra.Handler;
 
 /**
  *
@@ -33,16 +36,35 @@ public class TD5 {
         
         basket2.addCommandLine(ref3, 4);
         
-        DAOBasket daobasket = basket.getDAO();
+
         
         BasketJSONRepository repo = new BasketJSONRepository();
-        repo.save(daobasket);
+        /*repo.save(daobasket);
         
         BasketInMemoryRepository repoIM = new BasketInMemoryRepository();
         repoIM.save(daobasket);
         
-        DAOBasket backup = repoIM.getLastSaveOfBasket(1);
-        System.out.println(backup.getAmount());
+        Basket backup = repoIM.getLastSaveOfBasket(1);*/
+        
+        Handler h1 = new Handler();
+        Handler h3 = new Handler();
+        Handler h2 = new Handler();
+        
+        Gateway gateway = new Gateway();
+        
+        gateway.addCommandHandler(h1);
+        gateway.addCommandHandler(h2);
+        gateway.addCommandHandler(h3);
+        
+        BasketService basketService = new BasketService(gateway, repo);
+        
+        Reference ref4 = new Reference("254946554","Raclette","Appareil à raclette",1);
+        
+        basketService.addCommandAndSave(ref4, 1, 1);
+        
+        
+        
+        
                 
               
                 

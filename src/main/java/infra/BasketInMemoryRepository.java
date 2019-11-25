@@ -6,9 +6,10 @@
 
 package infra;
 
-import java.util.HashMap;
+import domain.Basket;
 import domain.BasketRepository;
 import domain.DAOBasket;
+import java.util.HashMap;
 
 /**
  *
@@ -28,9 +29,9 @@ public class BasketInMemoryRepository implements BasketRepository{
     }
     
     @Override
-    public DAOBasket getLastSaveOfBasket(int id){
+    public Basket getLastSaveOfBasket(int id){
         if(!this.memory.containsKey(id)) throw new IllegalArgumentException("Le Basket correspondant n'existe pas");
-        return this.memory.get(id);
+        return new Basket(this.memory.get(id));
     }
 
     @Override
